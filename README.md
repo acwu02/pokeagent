@@ -1,7 +1,7 @@
 # PokéAgent
 
 This is a deep reinforcement learning agent designed to find optimal strategies for winning Pokémon battles. It implements Double DQN to prevent overestimation of learned Q-values. [1] 
-It runs on [PokéAPI](https://pokeapi.co/), and a basic Pokémon battle environment developed by me. Currently, only damaging moves are supported.
+It runs on [PokéAPI](https://pokeapi.co/), [Gym](https://github.com/openai/gym), and a basic Pokémon battle environment developed by me. Currently, only damaging moves are supported.
 
 ## Setup
 
