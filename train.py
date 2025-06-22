@@ -6,7 +6,11 @@ import torch.nn as nn
 import torch.optim as optim
 
 from tqdm import tqdm
-from pokeagent import Dawn, Cynthia, PokemonEnv, BattleLogger
+from battle_env import PokemonBattleEnv
+from logger import BattleLogger
+from qnet import QNet
+
+from example_trainers import Dawn, Cynthia
 
 BATCH = 64
 GAMMA = 0.99
@@ -15,22 +19,10 @@ UPDATE_START = 1_000
 
 NUM_STEPS = 20_000
 
-class QNet(nn.Module):
-    def __init__(self, obs_dim, act_dim):
-        super().__init__()
-        self.layers = nn.Sequential(
-            nn.Linear(obs_dim, 128), nn.ReLU(),
-            nn.Linear(128, 128),      nn.ReLU(),
-            nn.Linear(128, act_dim)
-        )
-
-    def forward(self, x):
-        return self.layers(x)
-
 dawn = Dawn()
 cynthia = Cynthia()
 
-env = PokemonEnv(dawn, cynthia)
+env = PokemonBattleEnv(dawn, cynthia)
 env = BattleLogger(env)
 
 obs_dim = env.observation_space.shape[0]

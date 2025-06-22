@@ -4,7 +4,8 @@ import numpy as np
 from collections import defaultdict
 from tqdm import tqdm
 
-from pokeagent import Dawn, Cynthia, PokemonEnv, BattleLogger, QNet
+from pokeagent import Dawn, Cynthia, PokemonEnv, BattleLogger
+from qnet import QNet
 
 dawn = Dawn()
 cynthia = Cynthia()
